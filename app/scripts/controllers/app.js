@@ -37,8 +37,18 @@ angular.module('hyenaAppsApp')
         icon_upload.progress(function(evt) {
           console.log('progress: ' + parseInt(100.0 * evt.loaded / evt.total) + '% file :'+ evt.config.file.name);
         }).success(function(data, status, headers, config) {
-          // file is uploaded successfully
           $scope.app.icon_url = data.uploaded_file;
+          //Find the local app, update it.
+          for (var i = 0; i < $scope.currentUser.apps.length; i++) {
+            if($scope.currentUser.apps[i].id === appId)
+            {
+              $scope.currentUser.apps[i].icon_url = data.uploaded_file;
+              break;
+            }
+          }
+        }).error(function(data, status, headers, config) {
+          Notification.show('Sorry! There was an error uploading that image.', 'error');
+          console.log('Icon upload failed:', data);
         });
       }
     });
