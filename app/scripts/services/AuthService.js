@@ -47,11 +47,16 @@ angular.module('hyenaAppsApp')
        * @return Promise
        */
       logout: function() {
-        firebaseAuthRef.unauth();
         AuthService.expire();
         window.location.replace(APIPATH+'users/logout?api_key='+APIKEY);
       },
 
+      /**
+       * Creates a session for the authenticated user in local storage.
+       * @param  string
+       * @param  JWT
+       * @return bool
+       */
       createAuthSession: function(userId, authToken) {
         $localStorage.auth = true;
         $localStorage.authUser = userId;
@@ -99,7 +104,9 @@ angular.module('hyenaAppsApp')
        * @return bool
        */
       expire: function() {
-        firebaseAuthRef.unauth();
+        if(angular.isDefined(firebaseAuthRef))
+          firebaseAuthRef.unauth();
+        
         delete $localStorage.auth;
         delete $localStorage.authUser;
         delete $localStorage.authToken;

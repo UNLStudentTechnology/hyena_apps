@@ -28,7 +28,7 @@ angular.module('hyenaAppsApp')
         AuthService.manualLogin(authData.uid, authToken, 'apps').then(function(user) {
           $scope.currentUser = user.data;
         }, function(error) {
-          console.log('Login Error', error);
+          console.log('Login failed:', error);
         });
       }, function(error) {
         console.error("Login failed:", error);
