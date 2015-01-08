@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc service
- * @name hyenaCheckpointsApp.GroupService
+ * @name hyenaAppsApp.GroupService
  * @description
  * # GroupService
- * Service in the hyenaCheckpointsApp.
+ * Service in the hyenaAppsApp.
  */
-angular.module('hyenaCheckpointsApp')
+angular.module('hyenaAppsApp')
 	.service('GroupService', function (APIPATH, APIKEY, $http, $firebase, AppFirebase) {
 		var groupsRef = AppFirebase.getRef().child('groups');
 

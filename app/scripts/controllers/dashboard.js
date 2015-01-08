@@ -3,12 +3,12 @@
 
 /**
  * @ngdoc function
- * @name hyenaCheckpointsApp.controller:MainCtrl
+ * @name hyenaAppsApp.controller:MainCtrl
  * @description
  * # DashboardCtrl
- * Controller of the hyenaCheckpointsApp
+ * Controller of the hyenaAppsApp
  */
-angular.module('hyenaCheckpointsApp')
+angular.module('hyenaAppsApp')
   .controller('DashboardCtrl', function ($rootScope, $scope, $routeParams, GroupService, Notification) {
 
   });

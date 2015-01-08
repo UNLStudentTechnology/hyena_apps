@@ -3,12 +3,12 @@
 
 /**
  * @ngdoc service
- * @name hyenaCheckpointsApp.firebase
+ * @name hyenaAppsApp.firebase
  * @description
  * # firebase
- * Factory in the hyenaCheckpointsApp.
+ * Factory in the hyenaAppsApp.
  */
-angular.module('hyenaCheckpointsApp')
+angular.module('hyenaAppsApp')
   .factory('AppFirebase', function (FBURL, $firebase, $firebaseAuth) {
     var appFirebase = new Firebase(FBURL);
 

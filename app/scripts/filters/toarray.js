@@ -2,13 +2,13 @@
 
 /**
  * @ngdoc filter
- * @name hyenaCheckpointsApp.filter:toArray
+ * @name hyenaAppsApp.filter:toArray
  * @function
  * @description
  * # toArray
- * Filter in the hyenaCheckpointsApp.
+ * Filter in the hyenaAppsApp.
  */
-angular.module('hyenaCheckpointsApp')
+angular.module('hyenaAppsApp')
   .filter('toArray', function () {
     return function (obj) {
       	if (!(obj instanceof Object)) {

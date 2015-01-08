@@ -1,7 +1,7 @@
-Checkpoints @ UNL
+Hyena Apps @ UNL
 =================
 
-Event check in app for the University of Nebraska-Lincoln. Allows groups and organizations on campus to create and check students into events.
+Provides an interface to manage apps that developers have created on the Hyena Platform.
 
 Stack
 -----

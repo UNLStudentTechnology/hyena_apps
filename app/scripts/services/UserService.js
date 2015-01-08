@@ -3,12 +3,12 @@
 
 /**
  * @ngdoc service
- * @name hyenaCheckpointsApp.UserService
+ * @name hyenaAppsApp.UserService
  * @description
  * # UserService
- * Service in the hyenaCheckpointsApp.
+ * Service in the hyenaAppsApp.
  */
-angular.module('hyenaCheckpointsApp')
+angular.module('hyenaAppsApp')
 	.service('UserService', function (APIPATH, APIKEY, $http, toArrayFilter) {
 		return {
 			/**

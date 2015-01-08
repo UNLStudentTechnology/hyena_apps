@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc service
- * @name hyenaCheckpointsApp.Session
+ * @name hyenaAppsApp.Session
  * @description
  * # Session
  * Manages interaction with HTML5 sessionStorage and the authentication session.
  */
-angular.module('hyenaCheckpointsApp')
+angular.module('hyenaAppsApp')
   .service('Session', function Session(AppFirebase) {
 	return{
 		has: function(key){

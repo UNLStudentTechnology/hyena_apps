@@ -1,6 +1,6 @@
 {
-  "name": "hyenacheckpoints",
-  "version": "0.0.0",
+  "name": "hyena_apps",
+  "version": "0.1",
   "dependencies": {
     "connect-modrewrite": "^0.7.9",
     "express": "^4.10.4",

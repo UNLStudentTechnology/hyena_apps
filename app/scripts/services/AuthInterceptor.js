@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc service
- * @name hyenaCheckpointsApp.AuthInterceptor
+ * @name hyenaAppsApp.AuthInterceptor
  * @description
  * # AuthInterceptor
- * Factory in the hyenaCheckpointsApp.
+ * Factory in the hyenaAppsApp.
  */
-angular.module('hyenaCheckpointsApp')
+angular.module('hyenaAppsApp')
   .factory('AuthInterceptor', function ($rootScope, $q, AUTH_EVENTS) {
     
     return {

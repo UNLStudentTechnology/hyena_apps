@@ -2,18 +2,22 @@
 
 /**
  * @ngdoc function
- * @name hyenaCheckpointsApp.controller:AppctrlCtrl
+ * @name hyenaAppsApp.controller:AppctrlCtrl
  * @description
  * # AppctrlCtrl
- * Controller of the hyenaCheckpointsApp
+ * Controller of the hyenaAppsApp
  */
-angular.module('hyenaCheckpointsApp')
-  .controller('AppCtrl', function ($scope, $routeParams, AppService, Notification) {
-  	//Get the requested app by ID
-  	var appId = parseInt($routeParams.appId);
+angular.module('hyenaAppsApp')
+  .controller('AppCtrl', function ($scope, $routeParams, AppService, Notification, PLATFORM_ROOT) {
+
+    //Get the requested app by ID
+    var appId = parseInt($routeParams.appId);
     AppService.get(appId).then(function(response) {
-    	$scope.app = response.data;
+      $scope.app = response.data;
     });
+
+    //Set upload target
+    $scope.uploadTarget = PLATFORM_ROOT+'apps/'+appId+'/image';
 
     $scope.$watch('app', function(newValue, oldValue) {
     	if(angular.isDefined(oldValue) && newValue !== null && newValue !== oldValue)
@@ -21,6 +25,23 @@ angular.module('hyenaCheckpointsApp')
     		$scope.updateApp();
     	}
     }, true);
+
+    /**
+     * Watches ng-file-upload to see if the user is attempting to upload a file.
+     */
+    $scope.$watch('app_icon_file', function(app_icon) {
+      if(angular.isDefined(app_icon))
+      {
+        console.log(app_icon[0]);
+        var icon_upload = AppService.uploadImage(appId, app_icon[0]);
+        icon_upload.progress(function(evt) {
+          console.log('progress: ' + parseInt(100.0 * evt.loaded / evt.total) + '% file :'+ evt.config.file.name);
+        }).success(function(data, status, headers, config) {
+          // file is uploaded successfully
+          $scope.app.icon_url = data.uploaded_file;
+        });
+      }
+    });
 
     /**
      * Updates remote data for app
@@ -35,8 +56,32 @@ angular.module('hyenaCheckpointsApp')
     			}
     		}
     	}, function(error) {
-    		Notification.show('Sorry! There was an error.', 'error');
+    		Notification.show('Sorry! There was an error updating your app.', 'error');
     	});
+    };
+
+    /**
+     * Removes the app from the database
+     */
+    $scope.removeApp = function() {
+      AppService.remove(appId).then(function(response) {
+        //Find the local app, remove it.
+        for (var i = 0; i < $scope.currentUser.apps.length; i++) {
+          if($scope.currentUser.apps[i].id === appId)
+          {
+            //Remove element
+            $scope.currentUser.apps.splice(i, 1);
+            break;
+          }
+        }
+
+        //Navigate back to the app listing
+        $scope.go('/', 'animate-slide-left');
+        Notification.show('Your app has been removed.', 'success');
+      }, function(error) {
+        console.log('Error removing app', error);
+        Notification.show('Sorry! There was an error removing your app.', 'error');
+      });
     };
 
   });

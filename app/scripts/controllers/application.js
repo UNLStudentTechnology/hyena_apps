@@ -3,12 +3,12 @@
 
 /**
  * @ngdoc function
- * @name hyenaCheckpointsApp.controller:ApplicationCtrl
+ * @name hyenaAppsApp.controller:ApplicationCtrl
  * @description
  * # ApplicationCtrl
- * Controller of the hyenaCheckpointsApp
+ * Controller of the hyenaAppsApp
  */
-angular.module('hyenaCheckpointsApp')
+angular.module('hyenaAppsApp')
   .controller('ApplicationCtrl', function ($rootScope, $scope, $location, $window, $routeParams, $firebase, AuthService, UserService, AppFirebase, Notification, FBURL, AUTH_EVENTS) {
     //Initialize some variables
     $scope.appLoaded = null;

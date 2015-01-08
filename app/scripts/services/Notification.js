@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc service
- * @name hyenaCheckpointsApp.Notification
+ * @name hyenaAppsApp.Notification
  * @description
  * # Notification
  * Provides API for showing toasts and modal dialogs.
  */
-angular.module('hyenaCheckpointsApp')
+angular.module('hyenaAppsApp')
   .service('Notification', function Notification() {
 
     var NotificationService = {

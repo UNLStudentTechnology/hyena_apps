@@ -2,11 +2,11 @@
 
 /**
  * @ngdoc directive
- * @name hyenaCheckpointsApp.directive:user
+ * @name hyenaAppsApp.directive:user
  * @description
  * # user
  */
-angular.module('hyenaCheckpointsApp')
+angular.module('hyenaAppsApp')
   .directive('user', function (UserService) {
     return {
       restrict: 'A',

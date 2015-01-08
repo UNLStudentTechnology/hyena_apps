@@ -2,13 +2,13 @@
 
 /**
  * @ngdoc service
- * @name hyenaCheckpointsApp.Auth
+ * @name hyenaAppsApp.Auth
  * @description
  * # Auth
  * Reusable service that maintains a clientside authentication state.
  * REQUIRES the session and user service.
  */
-angular.module('hyenaCheckpointsApp')
+angular.module('hyenaAppsApp')
   .service('AuthService', function ($http, $sessionStorage, $localStorage, UserService, APIKEY, APIPATH, AppFirebase) {
     var firebaseAuthRef = AppFirebase.getRef();
 

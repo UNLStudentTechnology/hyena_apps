@@ -9,7 +9,7 @@
  * Main module of the application.
  */
 angular
-  .module('hyenaCheckpointsApp', [
+  .module('hyenaAppsApp', [
     'ngAnimate',
     'ngCookies',
     'ngResource',
@@ -18,13 +18,24 @@ angular
     'ngTouch',
     'ngStorage',
     'firebase',
-    'angularMoment'
+    'angularMoment',
+    'angularFileUpload'
   ])
   .config(function ($routeProvider, $locationProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
         controller: 'DashboardCtrl'
+      })
+      .when('/app/new', {
+        templateUrl: 'views/new.html',
+        controller: 'NewCtrl'
+      })
+      .when('/upload', {
+        template: '',
+        controller: function() {
+          console.log('Upload controller');
+        }
       })
       .when('/app/:appId', {
         templateUrl: 'views/app.html',
@@ -44,8 +55,8 @@ angular
       }
     ]);
   })
-  .constant('FBURL', 'https://amber-heat-9947.firebaseio.com/')
-  .constant('APIKEY', 'MTZhYThmNDhiOTdhNzI2YmUyN2NkYWZk')
+  .constant('FBURL', 'https://hyena-apps.firebaseio.com/')
+  .constant('APIKEY', 'NDBlZGMyZTNmZWU0YzQzYTkwMGRiZTA5')
   .constant('APIPATH', 'http://st-studio.unl.edu/hyena_platform/public/api/1.0/')
   .constant('PLATFORM_ROOT', 'http://st-studio.unl.edu/hyena_platform/public/')
   .constant('angularMomentConfig', {
