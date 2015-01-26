@@ -27,7 +27,6 @@
     <!-- endbuild -->
 
     <!-- UNL Components -->
-    <link rel="import" href="elements/unl-style/unl-style.html">
     <link rel="import" href="elements/unl-header/unl-header.html">
     <link rel="import" href="elements/unl-layout/unl-layout.html">
     <link rel="import" href="elements/unl-toolbar/unl-toolbar.html">
@@ -47,6 +46,7 @@
 
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/unl-style/dist/unl-style.css" />
     <!-- endbower -->
     <!-- endbuild -->
   </head>
@@ -70,7 +70,7 @@
                 <div ng-show="currentUser">
                 <!-- Authenticated user options -->
                 <unl-list-item-header>Options</unl-list-item-header>
-                <unl-list-item-label heading="Log out" link><a ng-href="#" ng-click="logOutCurrentUser()"></a></unl-list-item-label>
+                <unl-list-item-label heading="Log out" link><a ng-href="#" ng-click="logOutCurrentUser()"><paper-ripple fit></paper-ripple></a></unl-list-item-label>
                 <!-- End authenticated user options -->
                 </div>
             </unl-list-group>
