@@ -29,6 +29,7 @@
     <!-- UNL Components -->
     <link rel="import" href="elements/unl-header/unl-header.html">
     <link rel="import" href="elements/unl-layout/unl-layout.html">
+    <link rel="import" href="elements/unl-layout-splash/unl-layout-splash.html">
     <link rel="import" href="elements/unl-toolbar/unl-toolbar.html">
     <link rel="import" href="elements/unl-list-group/unl-list-group.html">
     <link rel="import" href="elements/unl-list-item/unl-list-item.html">
@@ -36,7 +37,6 @@
     <link rel="import" href="elements/unl-list-item-user/unl-list-item-user.html">
     <link rel="import" href="elements/unl-list-item-header/unl-list-item-header.html">
     <link rel="import" href="elements/unl-icon-button/unl-icon-button.html">
-    <link rel="import" href="elements/unl-ncard-input/unl-ncard-input.html">
     <link rel="import" href="elements/unl-toast/unl-toast.html">
     <link rel="import" href="elements/unl-modal/unl-modal.html">
     <link rel="import" href="elements/unl-empty-content/unl-empty-content.html">
@@ -51,7 +51,7 @@
     <!-- endbower -->
     <!-- endbuild -->
   </head>
-  <body ng-controller="ApplicationCtrl" ng-show="appLoaded" unresolved>
+  <body ng-controller="ApplicationCtrl" unresolved>
     <unl-modal id="unl-modal" type="takeover"></unl-modal>
     <!-- Login Modal Content -->
     <div id="modal-content-login" ng-include src="'views/partials/modal-login.html'" onload="showLoginWindow()"></div>
@@ -61,9 +61,19 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <div hidden ng-include src="'views/partials/validation-messages.html'"></div>
-    <!-- Add your site or application content here -->
-    <!-- <unl-header></unl-header> -->
+    <!-- Loading Page -->
+    <unl-layout-splash ng-hide="appLoaded">
+        <div heading>
+            <h2>
+                Loading Campus Talk
+                <span class="subhead">App Management</span>
+            </h2>
+        </div>
+        <div left>Student Technology</div>
+        <div center>go.unl.edu/campustalk</div>
+        <div right>University of Nebraska-Lincoln</div>
+    </unl-layout-splash>
+    <!-- Application Layout -->
     <unl-layout>
         <div drawer flex vertical layout>
             <unl-list-group>
@@ -81,7 +91,7 @@
         </div>
     </unl-layout>
     <unl-toast text=""></unl-toast>
-    <!-- End application content -->
+    <!-- End Application Layout -->
 
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->

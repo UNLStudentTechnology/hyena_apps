@@ -9,6 +9,7 @@
  */
 angular.module('hyenaAppsApp')
   .controller('AppCtrl', function ($scope, $routeParams, AppService, Notification, PLATFORM_ROOT) {
+    $scope.appSettingsForm = {};
 
     //Get the requested app by ID
     var appId = parseInt($routeParams.appId);
@@ -20,7 +21,7 @@ angular.module('hyenaAppsApp')
     $scope.uploadTarget = PLATFORM_ROOT+'apps/'+appId+'/image';
 
     $scope.$watch('app', function(newValue, oldValue) {
-    	if(angular.isDefined(oldValue) && newValue !== null && newValue !== oldValue)
+    	if(angular.isDefined(oldValue) && newValue !== null && newValue !== oldValue && $scope.appSettingsForm.$valid)
     	{
     		$scope.updateApp();
     	}

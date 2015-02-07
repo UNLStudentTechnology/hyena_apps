@@ -18,7 +18,6 @@ angular.module('hyenaAppsApp')
     //AUTHENTICATION FLOW
     if(angular.isDefined($location.search().token)) //If this is new log in from CAS
     {
-      $scope.appLoaded = true;
       //Get Query Params
       var authToken = $location.search().token;
       $location.url($location.path()); //Clear query params from address bar
@@ -26,6 +25,7 @@ angular.module('hyenaAppsApp')
       var tokenUser = AppFirebase.authenticate(authToken).then(function(authData) {
         //Process the user login
         AuthService.manualLogin(authData.uid, authToken, 'apps').then(function(user) {
+          $scope.appLoaded = true;
           $scope.currentUser = user.data;
         }, function(error) {
           console.log('Login failed:', error);
@@ -36,15 +36,15 @@ angular.module('hyenaAppsApp')
     }
     else if(AuthService.check() && AppFirebase.getAuthRef().$getAuth() !== null) //Already authenticated, attempt to get existing session
     {
-      $scope.appLoaded = true;
       AuthService.user('apps').then(function(user) {
+         $scope.appLoaded = true;
         $scope.currentUser = user.data;
       });
     }
     else
     {
       AuthService.login(); //Start the CAS flow
-      Notification.showModal('Please log in', '#modal-content-login');
+      Notification.showModal('Please log in', '#modal-content-login', 'takeover');
     }
     //END AUTHENTICATION FLOW
 
@@ -55,7 +55,7 @@ angular.module('hyenaAppsApp')
     $scope.$watch('currentUser', function(newVal, oldVal) {
       //console.log('currentUser', newVal, oldVal);
       if(oldVal !== null && (angular.isUndefined(newVal) || newVal === null))
-        Notification.showModal('Please log in', '#modal-content-login');
+        Notification.showModal('Please log in', '#modal-content-login', 'takeover');
       else if(oldVal !== null)
         Notification.hideModal();
     });
