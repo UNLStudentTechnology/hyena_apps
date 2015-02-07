@@ -47,6 +47,7 @@
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/unl-style/dist/unl-style.css" />
+    <link rel="stylesheet" href="bower_components/ng-tags-input/ng-tags-input.min.css" />
     <!-- endbower -->
     <!-- endbuild -->
   </head>
@@ -69,7 +70,7 @@
                 <unl-list-item-user user='{{currentUser | json}}'></unl-list-item-user>
                 <div ng-show="currentUser">
                 <!-- Authenticated user options -->
-                <unl-list-item-header>Options</unl-list-item-header>
+                <unl-list-item-header><core-icon icon="settings"></core-icon> Options</unl-list-item-header>
                 <unl-list-item-label heading="Log out" link><a ng-href="#" ng-click="logOutCurrentUser()"><paper-ripple fit></paper-ripple></a></unl-list-item-label>
                 <!-- End authenticated user options -->
                 </div>
@@ -118,24 +119,17 @@
     <script src="bower_components/ngstorage/ngStorage.js"></script>
     <script src="bower_components/angular-messages/angular-messages.js"></script>
     <script src="bower_components/ng-file-upload/angular-file-upload.js"></script>
+    <script src="bower_components/ng-tags-input/ng-tags-input.min.js"></script>
+    <script src="bower_components/hyena-angular/dist/hyena-angular.min.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
-        <script src="scripts/factories/AppFirebase.js"></script>
         <script src="scripts/controllers/application.js"></script>
         <script src="scripts/controllers/dashboard.js"></script>
-        <script src="scripts/services/UserService.js"></script>
-        <script src="scripts/services/Session.js"></script>
-        <script src="scripts/services/AuthService.js"></script>
-        <script src="scripts/services/AuthInterceptor.js"></script>
-        <script src="scripts/services/Notification.js"></script>
         <script src="scripts/services/GroupService.js"></script>
         <script src="scripts/services/AppService.js"></script>
-        <script src="scripts/filters/user.js"></script>
-        <script src="scripts/filters/toarray.js"></script>
-        <script src="scripts/directives/user.js"></script>
         <script src="scripts/controllers/app.js"></script>
         <script src="scripts/controllers/new.js"></script>
         <!-- endbuild -->

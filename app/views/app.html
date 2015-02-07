@@ -1,5 +1,4 @@
 <unl-toolbar>
-  	<unl-drawer-toggle ng-click="toggleMainDrawer()"></unl-drawer-toggle>
 	<a ng-click="go('/', 'animate-slide-left')" title="Back to Apps"><unl-icon-button icon="arrow-back"></unl-icon-button></a>
   	<span flex class="align-center">{{app.title || 'Loading'}}</span>
   	<a ng-href="{{app.url}}" title="Open App" target="_blank"><unl-icon-button icon="launch"></unl-icon-button></a>
@@ -42,13 +41,15 @@
 					<span class="small">{{app.api_secret}}</span>
 				</div>
 			</unl-list-item-label>
-			<unl-list-item-label heading="Authentication Token" label="This key is used to encrypt and decrypt JWTs that are returned when authenticating with Hyena.">
+			<unl-list-item-label heading="Authentication Token" label="Used to encrypt JWTs returned when authenticating with Hyena.">
 				<div class="tools">
 					<input type="text" name="app-token_key" ng-model="app.token_key" ng-model-options="{ debounce: 500 }">
 				</div>
 			</unl-list-item-label>
 		</unl-list-group>
-		<button type="button" ng-click="removeApp()" class="button-error">Delete App</button>
+		<button type="button" ng-click="showRemoveModal()" class="button-error">Delete App</button>
 	</form>
 	<!-- End App Settings -->
 </div>
+<!-- Modals -->
+<div id="modal-delete-confirm" hidden ng-include src="'views/partials/modal-delete-confirm.html'"></div>

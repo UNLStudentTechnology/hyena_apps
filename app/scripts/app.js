@@ -19,7 +19,8 @@ angular
     'ngStorage',
     'firebase',
     'angularMoment',
-    'angularFileUpload'
+    'angularFileUpload',
+    'hyenaAngular'
   ])
   .config(function ($routeProvider, $locationProvider) {
     $routeProvider

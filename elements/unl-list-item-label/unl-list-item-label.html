@@ -4,13 +4,16 @@
 Created by Hayden Gascoigne
 -->
 
-<polymer-element name="unl-list-item-label" attributes="heading label link image active">
+<polymer-element name="unl-list-item-label" attributes="heading label link image active user">
   <template>
     <li class="unl-list-item {{link ? 'unl-list-item-link' : ''}} {{active ? 'active' : ''}}" horizontal layout wrap>  
       <template if="{{image}}">
       <div class="list-item-image rounded">
         <img src="{{image}}" alt="List Item Image"/>
       </div>
+      </template>
+      <template if="{{!image && user}}">
+      <div class="list-item-image rounded placeholder">{{imagePlaceholder}}</div>
       </template>
       <div class="content" flex>   
         <div class="heading">{{heading}}</div>
@@ -44,7 +47,25 @@ Created by Hayden Gascoigne
       (function(){
         Polymer('unl-list-item-label', {
           link: false,
-          active: false
+          active: false,
+          user: false,
+          image: null,
+          imagePlaceholder: 'HA',
+
+          /**
+           * If the user attribute is set, will check to see if they have a profile image,
+           * if not it will display their first and last initials.
+           * @return {[type]} [description]
+           */
+          imageChanged: function() {
+            if(!this.image)
+            {
+              //Split the heading (99% of the time is the user's name)
+              var userNames = this.heading.split(" ");
+              this.imagePlaceholder = (userNames[0].charAt(0) + userNames[1].charAt(0)).toUpperCase();
+            }
+          }
+
         });
       }());
     </script>

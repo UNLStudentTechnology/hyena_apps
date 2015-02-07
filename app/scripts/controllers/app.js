@@ -94,4 +94,8 @@ angular.module('hyenaAppsApp')
       });
     };
 
+    $scope.showRemoveModal = function() {
+      Notification.showModal('Remove App?', '#modal-delete-confirm');
+    };
+
   });
